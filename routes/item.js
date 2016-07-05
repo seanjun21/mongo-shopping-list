@@ -20,4 +20,21 @@ router.post('/items', function(req, res) {
     });
 });
 
+router.put('/items/:id', function(req, res) {
+    Item.update(req.params.id, req.body.name, function(err, items) {
+        if (err) {
+            return res.status(400).json(err);
+        }
+        res.json(items);
+    });
+});
+
+router.delete('/items/:id', function(req, res) {
+    Item.del(req.params.id, function(err, items) {
+        if (err) {
+            return res.status(400).json(err);
+        }
+        res.json(items);
+    });
+});
 module.exports = router;
