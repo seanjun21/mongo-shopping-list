@@ -1,7 +1,7 @@
 var express = require('express');
 var Item = require('../services/item');
 var router = express.Router();
-
+// static routes
 router.get('/items', function(req, res) {
     Item.list(function(err, items) {
         if (err) {
@@ -19,7 +19,7 @@ router.post('/items', function(req, res) {
         res.status(201).json(item);
     });
 });
-
+// dynamic routes
 router.put('/items/:id', function(req, res) {
     Item.update(req.params.id, req.body.name, function(err, items) {
         if (err) {
