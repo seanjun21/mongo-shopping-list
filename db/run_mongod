@@ -1,0 +1,1 @@
+mongod --bind_ip=$IP --dbpath=/home/ubuntu/workspace/mongo-shopping-list/db/mongo_data --nojournal --rest "$@"
