@@ -26,8 +26,7 @@ exports.update = function(id, name, callback) {
             callback(err);
             return;
         }
-        
-    callback(null, item);
+        callback(null, item);
     });
 };
 
