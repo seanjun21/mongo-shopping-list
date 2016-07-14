@@ -1,5 +1,15 @@
 var Item = require('../models/item');
 
+exports.list = function(callback) {
+    Item.find(function(err, items) {
+        if (err) {
+            callback(err);
+            return;
+        }
+        callback(null, items);
+    });
+};
+
 exports.save = function(name, callback) {
     Item.create({ name: name }, function(err, item) {
         if (err) {
@@ -10,13 +20,13 @@ exports.save = function(name, callback) {
     });
 };
 
-exports.list = function(callback) {
-    Item.find(function(err, items) {
+exports.lookUp = function(id, callback) {
+    Item.findById({_id: id}, function (err, item) {
         if (err) {
             callback(err);
             return;
         }
-        callback(null, items);
+        callback(null, item);
     });
 };
 
